@@ -1,213 +1,277 @@
-# 📘 Reader Mode Browser Extension
 
-A lightweight browser extension that enables a distraction-free, reader-friendly view of any webpage with text-to-speech capabilities. It supports Chrome, Edge, Firefox, and other modern browsers that support Manifest V3.
+# 📘 Zen Reader – Distraction-Free Reader Mode with Text-to-Speech
 
-![Reader Mode Banner](extension/icons/icon128.png)
+A lightweight, privacy-friendly browser extension that transforms any cluttered webpage into a clean, distraction-free reading experience with powerful text-to-speech support. Zen Reader works across Chrome, Edge, Firefox, and all modern browsers supporting Manifest V3.
+
+![Zen Reader Banner](extension/icons/icon128.png)
+
+---
 
 ## ✨ Description
 
-Reader Mode is a browser extension designed to transform cluttered web pages into clean, distraction-free reading experiences. It removes ads, sidebars, popups, and other distracting elements, allowing you to focus solely on the content that matters.
+Zen Reader is a browser extension designed to strip away ads, sidebars, popups, and visual noise from web pages—so you can focus purely on the content that matters.
 
-The extension also includes a powerful text-to-speech feature with word highlighting, adjustable speed, and customizable voices, making web content more accessible and convenient to consume.
+It also features an advanced **text-to-speech system** with word highlighting, adjustable speed, and customizable voices, making web content more accessible, productive, and comfortable to consume.
+
+Zen Reader combines **AI-powered content extraction**, a beautiful reading interface, and **offline fallback mechanisms** to ensure consistent performance across all websites.
+
+---
 
 ## 🚀 Live Demo
 
-Visit our [GitHub Pages website](https://chirag127.github.io/Reader-Mode-Browser-Extension/) to learn more about the extension and see it in action.
+Visit the official demo site:
+
+https://chirag127.github.io/Zen-Reader-Browser-Extension/
+
+---
 
 ## 🛠️ Tech Stack / Tools Used
 
-### Frontend (Extension)
+### Frontend (Browser Extension)
 
--   HTML5, CSS3, JavaScript (Vanilla)
--   Chrome Extension API
--   Firefox WebExtension API
--   Manifest V3
--   Mozilla's Readability.js (fallback)
--   Web Speech API
+- HTML5, CSS3, JavaScript (Vanilla)
+- Chrome Extension API
+- Firefox WebExtension API
+- Manifest V3
+- Mozilla Readability.js (fallback extraction)
+- Web Speech API (Text-to-Speech)
 
-### Backend
+### Backend (Optional AI Extraction)
 
--   Node.js
--   Express.js
--   Google Generative AI API (Gemini 2.0 Flash Lite)
--   CORS for cross-origin requests
+- Node.js
+- Express.js
+- Google Generative AI API (Gemini 2.0 Flash Lite)
+- CORS for secure cross-origin requests
+
+---
 
 ## 🧪 Features
 
--   **AI-Powered Content Extraction**: Uses Google's Gemini 2.0 Flash Lite model for superior content extraction
--   **Clean Reading UI**: Displays only main content (title, article text, images)
--   **Light/Dark Mode**: Toggle between light and dark themes
--   **Font Customization**: Adjustable font family and size for better readability
--   **Page Navigation**: Preserves links within content
--   **Back to Original**: Button to return to the original webpage
--   **Text-to-Speech**: Read aloud content with word highlighting
--   **Adjustable Speed**: Customize reading speed up to 4x
--   **Floating Control Bar**: Easy access to play, pause, and settings controls
--   **Read from Selection**: Start reading from any selected text on the page
--   **Context Menu Integration**: Right-click on selected text to start reading
--   **Smart Scrolling**: Automatically scrolls to keep the current text in view
--   **Customizable Voice**: Choose from available system voices and adjust pitch
--   **Fallback Mechanisms**: Gracefully falls back to Readability.js when AI extraction is unavailable
+- **AI-Powered Content Extraction** using Gemini 2.0 Flash Lite  
+- **Clean Reader UI** showing only the article title, text, and images  
+- **Light & Dark Mode** for comfortable reading  
+- **Font Customization** (family and size controls)  
+- **Preserved Page Links** for in-article navigation  
+- **Instant Toggle** between Original View and Reader View  
+- **Text-to-Speech with Word Highlighting**  
+- **Adjustable Reading Speed** (0.5× to 4×)  
+- **Floating Playback Controls** (Play, Pause, Stop)  
+- **Read from Any Selection**  
+- **Right-Click Context Menu Support** for instant reading  
+- **Smart Auto-Scrolling** while reading  
+- **Customizable Voice & Pitch**  
+- **Offline Fallback** using Readability.js when AI is unavailable  
+
+---
 
 ## 💾 Installation Instructions
 
-### Backend Setup
+### 🔧 Backend Setup (For AI Extraction)
 
 1. Navigate to the backend directory:
-    ```
-    cd backend
-    ```
+```
+
+cd backend
+
+```
 2. Install dependencies:
-    ```
-    npm install
-    ```
-3. Create a `.env` file based on the `.env.example` file:
-    ```
-    cp .env.example .env
-    ```
-4. Add your Google AI API key to the `.env` file:
-    ```
-    GEMINI_API_KEY=your_api_key_here
-    ```
+```
+
+npm install
+
+```
+3. Create environment variables:
+```
+
+cp .env.example .env
+
+```
+4. Add your Gemini API key:
+```
+
+GEMINI_API_KEY=your_api_key_here
+
+```
 5. Start the backend server:
-    ```
-    npm start
-    ```
+```
 
-### Extension Setup
+npm start
 
-#### Chrome / Edge
+```
 
-1. Download or clone this repository
-2. Open Chrome/Edge and navigate to `chrome://extensions/` or `edge://extensions/`
-3. Enable "Developer mode" in the top-right corner
-4. Click "Load unpacked" and select the `extension` folder from this repository
-5. The Reader Mode extension should now appear in your browser toolbar
+---
 
-#### Firefox
+### 🌐 Extension Setup
 
-1. Download or clone this repository
-2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
-3. Click "Load Temporary Add-on"
-4. Select any file in the `extension` folder from this repository
-5. The Reader Mode extension should now appear in your browser toolbar
+#### ✅ Chrome / Edge
 
-### Configuration
+1. Clone or download this repository  
+2. Open:
+```
 
-If you need to change the backend URL or disable Gemini extraction, you can modify the `config.js` file in the extension directory.
+chrome://extensions/
+
+```
+or
+```
+
+edge://extensions/
+
+```
+3. Enable **Developer Mode**
+4. Click **Load Unpacked**
+5. Select the `extension` folder
+6. Zen Reader will appear in your browser toolbar
+
+---
+
+#### ✅ Firefox
+
+1. Clone or download this repository  
+2. Open:
+```
+
+about:debugging#/runtime/this-firefox
+
+```
+3. Click **Load Temporary Add-on**
+4. Select any file inside the `extension` directory
+5. Zen Reader will be activated
+
+---
+
+### ⚙️ Configuration
+
+To change:
+- Backend API URL  
+- Toggle Gemini AI extraction  
+
+Update the following file:
+```
+
+extension/config.js
+
+```
+
+---
 
 ## 🔧 Usage
 
-### Basic Usage
+### ✅ Basic Reader Mode
 
-1. Navigate to any article or content-heavy webpage
-2. Click the Reader Mode icon in your browser toolbar or click the "Enable Reader Mode" button in the popup
-3. The page will be transformed into a clean, reader-friendly format
-4. Use the controls at the top to:
-    - Toggle between light and dark mode
-    - Change font family and size
-    - Return to the original page
+1. Open any article or blog page  
+2. Click the **Zen Reader icon** in your browser toolbar  
+3. The page instantly transforms into a clean reading layout  
+4. Use the control bar to:
+   - Toggle Light/Dark mode
+   - Change font size & family
+   - Return to the original page
 
-### Text-to-Speech Feature
+---
 
-1. Click the speaker icon in the reader controls to start reading the article
-2. Use the floating control bar to:
-    - Play/Pause: Control the reading playback
-    - Stop: Stop reading completely
-    - Speed: Adjust the reading speed from 0.5x to 4x
-    - Voice: Select from available system voices
-    - Pitch: Adjust the pitch of the voice
-3. Alternatively, select any text and right-click to choose "Read selection aloud"
+### 🔊 Text-to-Speech Usage
 
-## 🧠 How It Works
+1. Click the **speaker icon** in the Zen Reader controls  
+2. Control playback with:
+   - Play / Pause  
+   - Stop  
+   - Speed (0.5×–4×)  
+   - Voice selection  
+   - Pitch control  
+3. You can also:
+   - Select any text  
+   - Right-click  
+   - Choose **Read Selection Aloud**
 
-The extension uses Google's Gemini 2.0 Flash Lite AI model to identify and extract the main content of a webpage, removing distractions like ads, sidebars, and navigation elements. It then presents this content in a clean, customizable format optimized for reading.
+---
 
-As a fallback mechanism, the extension also includes Mozilla's Readability.js algorithm for content extraction when the Gemini API is unavailable or for offline use.
+## 🧠 How Zen Reader Works
+
+Zen Reader uses the **Gemini 2.0 Flash Lite AI model** to intelligently extract the most relevant content from any webpage.
+
+When AI extraction is unavailable:
+- The extension automatically falls back to **Mozilla Readability.js**, ensuring Zen Reader works even **offline**.
+
+This dual-layer design guarantees:
+- High-quality extraction
+- Maximum compatibility
+- Zero website dependency
+
+---
 
 ## 📸 Screenshots
 
-![Reader Mode Light Theme](https://via.placeholder.com/800x450.png?text=Reader+Mode+Light+Theme)
-![Reader Mode Dark Theme](https://via.placeholder.com/800x450.png?text=Reader+Mode+Dark+Theme)
-![Text-to-Speech Feature](https://via.placeholder.com/800x450.png?text=Text-to-Speech+Feature)
+![Zen Reader Light Theme](https://via.placeholder.com/800x450.png?text=Zen+Reader+Light+Theme)
+![Zen Reader Dark Theme](https://via.placeholder.com/800x450.png?text=Zen+Reader+Dark+Theme)
+![Zen Reader Text-to-Speech](https://via.placeholder.com/800x450.png?text=Zen+Reader+Text-to-Speech)
+
+---
 
 ## 💻 Development
 
-### Project Structure
+### 📁 Project Structure
 
 ```
+
 extension/
 ├── icons/                   # Extension icons
-├── reader/                  # Reader mode UI
-│   ├── reader.html          # Reader page template
-│   ├── reader.css           # Styles for reader mode
-│   └── reader.js            # Reader functionality
-├── background.js            # Background script for extension
-├── content.js               # Content script for extraction
-├── extension.js             # Helper functions
-├── manifest.json            # Extension manifest
+├── reader/                  # Reader Mode UI
+│   ├── reader.html          # Reader layout
+│   ├── reader.css           # Reader styles
+│   └── reader.js            # Reader logic
+├── background.js            # Extension background runtime
+├── content.js               # Content extraction logic
+├── extension.js             # Shared helper utilities
+├── manifest.json            # Manifest V3 config
 ├── popup.html               # Popup UI
-└── popup.js                 # Popup functionality
+└── popup.js                 # Popup logic
+
 ```
 
-### Key Components
+---
 
-1. **Background Script** (`background.js`): Manages the extension's state and handles communication between components
-2. **Content Script** (`content.js`): Extracts content from webpages using Readability.js
-3. **Reader UI** (`reader/`): Presents the extracted content in a clean, customizable format
-4. **Popup UI** (`popup.html`, `popup.js`): Provides a simple interface for enabling reader mode
-5. **Helper Functions** (`extension.js`): Shared functionality used by multiple components
+### 🧩 Key Components
 
-### Testing
+1. **Background Script** – Coordinates extension state and messaging  
+2. **Content Script** – Extracts readable content from web pages  
+3. **Reader UI** – Displays distraction-free reading layout  
+4. **Popup UI** – Control panel to activate Zen Reader  
+5. **Helpers** – Shared utility logic  
 
-A test page is provided in the `test` directory to help verify the extension's functionality:
+---
 
-1. Open `test/test_article.html` in your browser
-2. Click the Reader Mode icon or button
-3. Verify that the article content is properly extracted and displayed in reader mode
+## 🧪 Testing
 
-### Building
+1. Open:
+```
 
-This extension is built with vanilla JavaScript, HTML, and CSS, so no build step is required. Simply make your changes to the source files.
+test/test_article.html
 
-## 📱 Browser Compatibility
+```
+2. Click the Zen Reader icon  
+3. Verify:
+- Content extraction
+- Theme switching
+- Text-to-Speech playback  
+- Selection-based reading  
 
-The extension is designed to work with:
+---
 
--   Google Chrome (v88+)
--   Microsoft Edge (v88+)
--   Mozilla Firefox (v109+)
+## 📜 License
 
-## 💡 Future Enhancements
+MIT License
 
-Potential future enhancements include:
+---
 
-1. **Reading List**: Save content for offline reading
-2. **Scroll Progress Indicator**: Show reading progress
-3. **Highlighting & Notes**: Allow users to highlight text and take notes
-4. **Custom Themes**: Additional theme options beyond light/dark
-5. **Translation**: Integrate with translation services to read content in different languages
-6. **Voice Commands**: Control the reader mode using voice commands
+## 🌟 Vision
 
-## 👋 Contributing
+Zen Reader exists to restore peace to the modern web.  
+No noise. No clutter. Just content.
 
-Contributions are welcome! Here's how you can contribute:
+Whether you’re reading articles, documentation, blogs, or long research papers—Zen Reader transforms the web into a calm, focused reading environment.
 
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Commit your changes (`git commit -m 'Add some amazing feature'`)
-5. Push to the branch (`git push origin feature/amazing-feature`)
-6. Open a Pull Request
+---
 
-Please make sure to update tests as appropriate and adhere to the existing coding style.
+## ⭐ Support the Project
 
-## 🌟 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👏 Credits
-
--   [Mozilla's Readability.js](https://github.com/mozilla/readability) - Content extraction algorithm
--   [Google Fonts](https://fonts.google.com/) - Web fonts used in the reader UI
--   [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) - Text-to-speech functionality
+If Zen Reader improves your reading experience, please consider giving the project a ⭐ on GitHub. Your support helps the project grow and evolve.
