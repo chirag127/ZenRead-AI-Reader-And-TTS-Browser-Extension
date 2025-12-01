@@ -1,7 +1,7 @@
 
-# 📘 Zen Reader – Distraction-Free Reader Mode with Text-to-Speech
+# 📘 Zen Reader – Distraction-Free Reader Mode with AI Text-to-Speech
 
-A lightweight, privacy-friendly browser extension that transforms any cluttered webpage into a clean, distraction-free reading experience with powerful text-to-speech support. Zen Reader works across Chrome, Edge, Firefox, and all modern browsers supporting Manifest V3.
+Zen Reader is a privacy-first browser extension that transforms cluttered web pages into clean, distraction-free reading experiences with powerful built-in text-to-speech and **AI-powered content extraction using Google Gemini**. It works across Chrome, Edge, Firefox, and all modern browsers supporting Manifest V3.
 
 ![Zen Reader Banner](extension/icons/icon128.png)
 
@@ -9,17 +9,20 @@ A lightweight, privacy-friendly browser extension that transforms any cluttered 
 
 ## ✨ Description
 
-Zen Reader is a browser extension designed to strip away ads, sidebars, popups, and visual noise from web pages—so you can focus purely on the content that matters.
+Zen Reader removes ads, sidebars, popups, and visual clutter from web pages so you can focus purely on the content that matters.
 
-It also features an advanced **text-to-speech system** with word highlighting, adjustable speed, and customizable voices, making web content more accessible, productive, and comfortable to consume.
+It uses **Google Gemini AI (client-side via API)** to extract high-quality readable content when available, and automatically falls back to **Mozilla Readability.js** for offline use. The extension also features a rich **text-to-speech system** with word highlighting, adjustable speed, and customizable voices.
 
-Zen Reader combines **AI-powered content extraction**, a beautiful reading interface, and **offline fallback mechanisms** to ensure consistent performance across all websites.
+Zen Reader is built with a **privacy-first architecture**:
+- ✅ No backend servers  
+- ✅ No databases  
+- ✅ No user tracking  
+- ✅ User-controlled AI API key  
+- ✅ Offline fallback supported  
 
 ---
 
 ## 🚀 Live Demo
-
-Visit the official demo site:
 
 https://chirag127.github.io/Zen-Reader-Browser-Extension/
 
@@ -27,83 +30,68 @@ https://chirag127.github.io/Zen-Reader-Browser-Extension/
 
 ## 🛠️ Tech Stack / Tools Used
 
-### Frontend (Browser Extension)
+### Frontend (100% Client-Side)
 
 - HTML5, CSS3, JavaScript (Vanilla)
 - Chrome Extension API
 - Firefox WebExtension API
 - Manifest V3
-- Mozilla Readability.js (fallback extraction)
-- Web Speech API (Text-to-Speech)
+- Google Gemini API (client-side)
+- Mozilla Readability.js (offline fallback)
+- Web Speech API (native Text-to-Speech)
+- IndexedDB / Browser Storage APIs (local preferences)
 
-### Backend (Optional AI Extraction)
-
-- Node.js
-- Express.js
-- Google Generative AI API (Gemini 2.0 Flash Lite)
-- CORS for secure cross-origin requests
+✅ No Node.js  
+✅ No Express  
+✅ No servers  
+✅ No databases  
 
 ---
 
 ## 🧪 Features
 
-- **AI-Powered Content Extraction** using Gemini 2.0 Flash Lite  
-- **Clean Reader UI** showing only the article title, text, and images  
-- **Light & Dark Mode** for comfortable reading  
-- **Font Customization** (family and size controls)  
-- **Preserved Page Links** for in-article navigation  
-- **Instant Toggle** between Original View and Reader View  
+- **AI-Powered Content Extraction** using Google Gemini  
+- **Offline Fallback Extraction** using Mozilla Readability.js  
+- **Clean Reader UI** with only the article title, text, and images  
+- **Light & Dark Mode**  
+- **Font Customization** (family & size)  
+- **Preserved Page Links**  
+- **Instant Toggle** back to original webpage  
 - **Text-to-Speech with Word Highlighting**  
-- **Adjustable Reading Speed** (0.5× to 4×)  
-- **Floating Playback Controls** (Play, Pause, Stop)  
-- **Read from Any Selection**  
-- **Right-Click Context Menu Support** for instant reading  
-- **Smart Auto-Scrolling** while reading  
+- **Adjustable Reading Speed** (0.5×–4×)  
+- **Floating Playback Controls**  
+- **Read from Any Text Selection**  
+- **Right-Click Context Menu Support**  
+- **Smart Auto-Scrolling While Reading**  
 - **Customizable Voice & Pitch**  
-- **Offline Fallback** using Readability.js when AI is unavailable  
+- **Local Settings Storage**  
+- **Zero Telemetry & Zero Tracking**
+
+---
+
+## 🔑 Gemini API Setup (Required for AI Extraction)
+
+Zen Reader uses **Google Gemini directly from your browser**.
+
+### Steps:
+
+1. Go to **Google AI Studio**
+2. Create a **Gemini API Key**
+3. Open the **Zen Reader Settings Panel**
+4. Paste your API key into **Gemini API Key**
+5. Save settings
+
+✅ The API key is stored **only in your browser storage**  
+✅ The key is **never sent to any server you control**  
+✅ All Gemini requests are made **directly from your browser to Google**
+
+If no API key is provided or if the user is offline, Zen Reader automatically switches to **Readability.js**.
 
 ---
 
 ## 💾 Installation Instructions
 
-### 🔧 Backend Setup (For AI Extraction)
-
-1. Navigate to the backend directory:
-```
-
-cd backend
-
-```
-2. Install dependencies:
-```
-
-npm install
-
-```
-3. Create environment variables:
-```
-
-cp .env.example .env
-
-```
-4. Add your Gemini API key:
-```
-
-GEMINI_API_KEY=your_api_key_here
-
-```
-5. Start the backend server:
-```
-
-npm start
-
-```
-
----
-
-### 🌐 Extension Setup
-
-#### ✅ Chrome / Edge
+### ✅ Chrome / Edge
 
 1. Clone or download this repository  
 2. Open:
@@ -125,7 +113,7 @@ edge://extensions/
 
 ---
 
-#### ✅ Firefox
+### ✅ Firefox
 
 1. Clone or download this repository  
 2. Open:
@@ -140,32 +128,20 @@ about:debugging#/runtime/this-firefox
 
 ---
 
-### ⚙️ Configuration
-
-To change:
-- Backend API URL  
-- Toggle Gemini AI extraction  
-
-Update the following file:
-```
-
-extension/config.js
-
-```
-
----
-
 ## 🔧 Usage
 
 ### ✅ Basic Reader Mode
 
 1. Open any article or blog page  
 2. Click the **Zen Reader icon** in your browser toolbar  
-3. The page instantly transforms into a clean reading layout  
-4. Use the control bar to:
-   - Toggle Light/Dark mode
-   - Change font size & family
-   - Return to the original page
+3. Zen Reader will:
+- First try **Gemini AI extraction**
+- If unavailable → auto-fallback to **Readability.js**
+4. The page transforms into a clean reading layout  
+5. Use the controls to:
+- Toggle Light/Dark mode  
+- Change font size & family  
+- Return to the original page  
 
 ---
 
@@ -173,43 +149,37 @@ extension/config.js
 
 1. Click the **speaker icon** in the Zen Reader controls  
 2. Control playback with:
-   - Play / Pause  
-   - Stop  
-   - Speed (0.5×–4×)  
-   - Voice selection  
-   - Pitch control  
+- Play / Pause  
+- Stop  
+- Speed (0.5×–4×)  
+- Voice selection  
+- Pitch control  
 3. You can also:
-   - Select any text  
-   - Right-click  
-   - Choose **Read Selection Aloud**
+- Select any text  
+- Right-click  
+- Choose **Read Selection Aloud**
 
 ---
 
-## 🧠 How Zen Reader Works
+## 🧠 How Zen Reader Works (Hybrid AI + Offline)
 
-Zen Reader uses the **Gemini 2.0 Flash Lite AI model** to intelligently extract the most relevant content from any webpage.
+1. The page DOM is captured locally
+2. If online and API key exists:
+- Content is sent to **Gemini for intelligent extraction**
+3. If offline or API key missing:
+- **Mozilla Readability.js** extracts the content locally
+4. Clean text is rendered inside Zen Reader
+5. Text-to-Speech runs using the **native browser voice engine**
 
-When AI extraction is unavailable:
-- The extension automatically falls back to **Mozilla Readability.js**, ensuring Zen Reader works even **offline**.
-
-This dual-layer design guarantees:
-- High-quality extraction
-- Maximum compatibility
-- Zero website dependency
-
----
-
-## 📸 Screenshots
-
-![Zen Reader Light Theme](https://via.placeholder.com/800x450.png?text=Zen+Reader+Light+Theme)
-![Zen Reader Dark Theme](https://via.placeholder.com/800x450.png?text=Zen+Reader+Dark+Theme)
-![Zen Reader Text-to-Speech](https://via.placeholder.com/800x450.png?text=Zen+Reader+Text-to-Speech)
+This ensures:
+- ✅ Best-quality extraction with AI
+- ✅ Offline reliability
+- ✅ Zero backend dependency
+- ✅ Full privacy control
 
 ---
 
-## 💻 Development
-
-### 📁 Project Structure
+## 📂 Project Structure
 
 ```
 
@@ -219,8 +189,8 @@ extension/
 │   ├── reader.html          # Reader layout
 │   ├── reader.css           # Reader styles
 │   └── reader.js            # Reader logic
-├── background.js            # Extension background runtime
-├── content.js               # Content extraction logic
+├── background.js            # Extension runtime
+├── content.js               # Page capture & fallback extraction
 ├── extension.js             # Shared helper utilities
 ├── manifest.json            # Manifest V3 config
 ├── popup.html               # Popup UI
@@ -230,30 +200,16 @@ extension/
 
 ---
 
-### 🧩 Key Components
+## 🔐 Privacy & Security
 
-1. **Background Script** – Coordinates extension state and messaging  
-2. **Content Script** – Extracts readable content from web pages  
-3. **Reader UI** – Displays distraction-free reading layout  
-4. **Popup UI** – Control panel to activate Zen Reader  
-5. **Helpers** – Shared utility logic  
-
----
-
-## 🧪 Testing
-
-1. Open:
-```
-
-test/test_article.html
-
-```
-2. Click the Zen Reader icon  
-3. Verify:
-- Content extraction
-- Theme switching
-- Text-to-Speech playback  
-- Selection-based reading  
+- ✅ No backend servers  
+- ✅ No telemetry  
+- ✅ No tracking  
+- ✅ No databases  
+- ✅ API key stored only locally  
+- ✅ No third-party analytics  
+- ✅ Optional offline mode  
+- ✅ User maintains full control
 
 ---
 
@@ -268,10 +224,12 @@ MIT License
 Zen Reader exists to restore peace to the modern web.  
 No noise. No clutter. Just content.
 
-Whether you’re reading articles, documentation, blogs, or long research papers—Zen Reader transforms the web into a calm, focused reading environment.
+AI-powered when you want it.  
+Offline-friendly when you need it.  
+Private always.
 
 ---
 
 ## ⭐ Support the Project
 
-If Zen Reader improves your reading experience, please consider giving the project a ⭐ on GitHub. Your support helps the project grow and evolve.
+If Zen Reader improves your daily reading experience, please consider giving the project a ⭐ on GitHub. Your support helps the project grow and stay maintained.
