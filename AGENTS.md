@@ -6,7 +6,7 @@
 **Output Standard:** Deliver **EXECUTION-ONLY** results. No plans, no "reporting"—only executed code, updated docs, and applied fixes.
 **Philosophy:** "Zero-Defect, High-Velocity, Future-Proof."
 
----
+--- 
 
 ## 2. INPUT PROCESSING & COGNITION
 *   **SPEECH-TO-TEXT INTERPRETATION PROTOCOL:**
@@ -19,77 +19,79 @@
     *   **Validation:** Use `docfork` to verify *every* external API signature.
     *   **Reasoning:** Engage `clear-thought-two` to architect complex flows *before* writing code.
 
----
+--- 
 
 ## 3. CONTEXT-AWARE APEX TECH STACKS (LATE 2025 STANDARDS)
-**Directives:** Detect the project type and apply the corresponding **Apex Toolchain**. This repository, `ZenRead-AI-Reader-Mode-And-TTS-Browser-Extension`, is a JavaScript-based browser extension.
 
-*   **PRIMARY SCENARIO: WEB / APP / EXTENSION (TypeScript/JavaScript)**
-    *   **Stack:** This project utilizes **JavaScript/TypeScript** (ESNext features), **Vite** (as a bundler for modern development workflows), **TailwindCSS v4** (for utility-first styling), and **Tauri v2** (for potential desktop shell, though primarily focused on browser extension standards).
-    *   **Architecture:** Employs **Feature-Sliced Design (FSD)** for modularity and maintainability within the browser extension context. Leveraging **Manifest V3** standards for Chrome, Edge, and Firefox compatibility.
-    *   **AI Integration:** Integrates with **Google Gemini API** (`gemini-3-pro` by default) for AI content extraction. Prioritizes efficient API calls, clear data handling, and robust error management, ensuring no client-side credentials are exposed.
-    *   **Lint/Test:** **Biome** for ultra-fast linting and formatting, **Vitest** for unit testing, and **Playwright** for end-to-end testing of extension functionality across different browser environments.
+**Directives:** Detect the project type and apply the **Apex Toolchain**. This repository, `ZenRead-AI-Content-Reader-Browser-Extension`, is a browser extension project.
+
+*   **PRIMARY SCENARIO: WEB / APP / EXTENSION (TypeScript/JavaScript) - Current Project Stack**
+    *   **Stack:** This project leverages **TypeScript 6.x** with a focus on modern JavaScript standards. Key tools include **Vite 7** (for blazing-fast builds via Rolldown), **Tauri v2.x** (for potential native integration, if applicable), and **WXT (Web Extension Toolkit)** for streamlined multi-browser extension development (Chrome, Firefox, Edge).
+    *   **State Management:** Utilize **Signals** as the standardized, modern approach to state management.
+    *   **Linting & Formatting:** Employ **Biome** for ultra-fast, unified code linting and formatting.
+    *   **Testing:** Implement **Vitest** for rapid unit tests and **Playwright** for end-to-end (E2E) testing across target browsers.
+    *   **Architecture:** Follow **Feature-Sliced Design (FSD)** principles for maintainable and scalable frontend architecture, ensuring clear separation of concerns within the extension's components and features.
+    *   **AI Integration:** Deeply integrated with **Google Gemini API** (`gemini-3-pro` by default) for intelligent content summarization. Prioritize modular design, clear API contracts, and robust error handling for all AI model interactions.
+    *   **TTS Integration:** Seamlessly integrate **Web Speech API** for Text-to-Speech functionality, ensuring accessibility and user preference.
 
 *   **SECONDARY SCENARIO B: SYSTEMS / PERFORMANCE (Rust/Go) - *Not applicable for this project.***
-*   **SECONDARY SCENARIO C: DATA / AI / SCRIPTS (Python) - *Not applicable for this project.***
+    *   **Stack:** Rust (Cargo), Go (Modules).
+    *   **Lint:** Clippy / GolangCI-Lint.
+    *   **Architecture:** Hexagonal Architecture (Ports & Adapters).
 
----
+*   **TERTIARY SCENARIO C: DATA / AI / SCRIPTS (Python) - *Not applicable for this project.***
+    *   **Stack:** uv (Manager), Ruff (Linter), Pytest (Test).
+    *   **Architecture:** Modular Monolith or Microservices.
 
-## 4. CORE ARCHITECTURAL PRINCIPLES
-*   **SOLID:** Adhere strictly to Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion principles in all modules.
-*   **DRY (Don't Repeat Yourself):** Eliminate redundant code through abstraction and modularization.
-*   **KISS (Keep It Simple, Stupid):** Favor straightforward solutions over overly complex ones.
-*   **YAGNI (You Ain't Gonna Need It):** Implement only necessary features. Avoid speculative design.
-*   **Security First:** Implement security best practices at every layer, especially concerning API keys, user data, and cross-origin interactions. **No Server, No Tracking** is a paramount security and privacy directive.
+--- 
 
----
+## 4. DEVELOPMENT COMMANDS & VERIFICATION PROTOCOL
 
-## 5. DEVELOPMENT & VERIFICATION COMMANDS
-*   **Repository:** `https://github.com/chirag127/ZenRead-AI-Reader-Mode-And-TTS-Browser-Extension`
-*   **Prerequisites:** Node.js (v20+), npm/yarn/pnpm.
-*   **Setup:**
-    bash
-    git clone https://github.com/chirag127/ZenRead-AI-Reader-Mode-And-TTS-Browser-Extension.git
-    cd ZenRead-AI-Reader-Mode-And-TTS-Browser-Extension
-    # Use your preferred package manager
-    npm install
-    # or
-    yarn install
-    # or
-    pnpm install
-    
-*   **Development Server:**
-    bash
-    # For Vite development server (if applicable for extension building)
-    npm run dev
-    
-*   **Lint & Format:**
-    bash
-    npm run lint
-    npm run format
-    
-*   **Unit Tests:**
-    bash
-    npm run test:unit
-    
-*   **End-to-End Tests:**
-    bash
-    npm run test:e2e
-    
-*   **Build for Production:**
-    bash
-    npm run build
-    
-*   **Extension Installation:** Follow browser-specific instructions to load the unpacked extension from the `dist` or `build` directory.
+*   **INITIALIZATION & SETUP:**
+    *   `git clone https://github.com/chirag127/ZenRead-AI-Content-Reader-Browser-Extension`
+    *   `cd ZenRead-AI-Content-Reader-Browser-Extension`
+    *   `npm install` or `yarn install` (or equivalent via WXT tooling)
 
----
+*   **BUILD & DEVELOPMENT:**
+    *   `npm run dev` or `yarn dev` (or WXT equivalent for development server)
+    *   `npm run build` or `yarn build` (or WXT equivalent for production build)
 
-## 6. AI AGENT DIRECTIVES
-*   **AI Model:** Google Gemini (`gemini-3-pro` default).
-*   **API Endpoint:** `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro:generateContent` (Example - actual endpoint may vary based on SDK).
-*   **API Key Management:** API key MUST NOT be hardcoded. Use environment variables (`.env` files during development) and secure methods for production deployment (e.g., leveraging browser extension secure storage APIs if applicable or build-time injection for specific environments, but **NEVER** exposing the key in client-side code). The directive "No servers, no tracking" implies client-side operations or serverless functions for API calls if absolutely necessary, but direct client-to-Google-API with secure key handling is preferred.
-*   **Content Extraction Logic:** Prioritize extracting the main article content, title, author, and publication date. Implement fallback using `Readability.js` for offline scenarios or if AI extraction fails.
-*   **Text-to-Speech (TTS) Logic:** Utilize browser-native Web Speech API or a privacy-focused library. Implement word-level highlighting synchronization with the spoken audio.
-*   **Privacy & Security:** **ABSOLUTELY NO TRACKING OR SERVER-SIDE LOGGING.** All processing should occur client-side or via ephemeral serverless functions if absolutely required, with strict data sanitization. User data must never leave the user's control.
-*   **Error Handling:** Implement robust error handling for all network requests, AI API calls, and TTS operations. Provide clear feedback to the user.
-*   **Update Strategy:** Regularly check for updates to the Gemini API, browser extension APIs (Manifest V3), and core libraries (Vite, Biome, Vitest, Playwright). Incorporate updates following the "Zero-Defect, High-Velocity, Future-Proof" philosophy.
+*   **TESTING & QUALITY ASSURANCE:**
+    *   `npm run lint` or `yarn lint` (or `npx @biomejs/biome check . --apply` for formatting and fixing)
+    *   `npm run test:unit` or `yarn test:unit` (Execute Vitest unit tests)
+    *   `npm run test:e2e` or `yarn test:e2e` (Execute Playwright E2E tests)
+
+*   **AI INTEGRATION CHECKS:**
+    *   **Gemini API Endpoint:** Ensure all calls to the Gemini API are directed to `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro:generateContent?key=<YOUR_API_KEY>`. Replace `<YOUR_API_KEY>` with the actual, securely managed API key.
+    *   **TTS Configuration:** Verify the Web Speech API integration for `en-US` voice (`google_crosswalk`) and `rate`, `pitch` configurations as per user settings.
+
+--- 
+
+## 5. ARCHITECTURAL PRINCIPLES (FAANG-LEVEL STANDARDS)
+
+*   **SOLID Principles:** Ensure each component adheres to Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion.
+*   **DRY (Don't Repeat Yourself):** Abstract common logic into reusable functions, components, or modules.
+*   **YAGNI (You Ain't Gonna Need It):** Build only what is necessary for current features. Avoid premature optimization or over-engineering.
+*   **KISS (Keep It Simple, Stupid):** Favor straightforward, understandable solutions over complex ones.
+*   **Progressive Enhancement:** Design features to work at their core without advanced JavaScript, then layer on enhancements.
+*   **Accessibility (A11y):** Adhere to WCAG 2.1 AA standards. Ensure screen reader compatibility, keyboard navigation, and clear focus indicators.
+
+--- 
+
+## 6. SECURITY & PRIVACY MANDATES (DECEMBER 2025)
+
+*   **Privacy-First Design:** User data is paramount. Minimize data collection. All AI processing should ideally happen client-side or via ephemeral serverless functions. If using external APIs (Gemini), ensure API keys are managed securely (e.g., via environment variables, not hardcoded).
+*   **Cross-Site Scripting (XSS) Prevention:** Sanitize all user inputs and dynamically generated content. Use appropriate Content Security Policy (CSP) headers.
+*   **API Key Management:** Never commit API keys directly into the codebase. Utilize `.env` files and ensure they are listed in `.gitignore`.
+*   **Dependency Security:** Regularly audit project dependencies for known vulnerabilities using tools like `npm audit` or GitHub's Dependabot.
+*   **Permissions:** Request only the minimum necessary browser permissions required for the extension's functionality.
+*   **Data Handling:** Encrypt sensitive data at rest and in transit where applicable.
+
+--- 
+
+## 7. FUTURE PROOFING & SCALABILITY
+
+*   **WXT Framework:** Leverage WXT's multi-browser support to ensure compatibility and ease of deployment across Chrome, Firefox, and Edge.
+*   **Component-Based Architecture:** Utilize a framework like React, Vue, or Svelte (if chosen) within the WXT structure for modularity and reusability.
+*   **Type Safety:** Maintain rigorous TypeScript type definitions to catch errors at compile time and improve code maintainability.
+*   **Performance Optimization:** Continuously monitor and optimize bundle sizes, script execution times, and memory usage, especially critical for browser extensions.
